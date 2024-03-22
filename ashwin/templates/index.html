@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secure Data Transmission</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        li {
+            display: inline-block;
+            margin-right: 10px;
+        }
+
+        a {
+            text-decoration: none;
+            background-color: #007bff;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        a:hover {
+            background-color: #0056b3;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        form {
+            width: 400px;
+            margin-top: 20px;
+            border: 1px solid #ccc;
+            padding: 15px;
+            border-radius: 5px;
+            background-color: #f0f0f0;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            box-sizing: border-box;
+        }
+
+        button {
+            width: 100%;
+            background-color: #007bff;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>RSA Cryptography</h1>
+        <p>Select an action:</p>
+        <ul>
+            <li><a href="{{ url_for('index') }}">Home</a></li>
+            <li><a href="{{ url_for('generate_keys') }}">Generate Keys</a></li>
+        </ul>
+
+        <form action="{{ url_for('encrypt') }}" method="post">
+            <label for="plaintext">Enter Plaintext:</label>
+            <input type="text" id="plaintext" name="plaintext" required>
+            <label for="public_key">Enter Public Key:</label>
+            <textarea id="public_key" name="public_key" rows="5" required></textarea>
+            <button type="submit">Encrypt Data</button>
+        </form>
+
+        <form action="{{ url_for('decrypt') }}" method="post">
+            <label for="ciphertext">Enter Ciphertext:</label>
+            <input type="text" id="ciphertext" name="ciphertext" required>
+            <label for="private_key">Enter Private Key:</label>
+            <textarea id="private_key" name="private_key" rows="5" required></textarea>
+            <button type="submit">Decrypt Data</button>
+        </form>
+    </div>
+</body>
+</html>
